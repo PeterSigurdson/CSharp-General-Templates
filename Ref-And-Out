@@ -1,0 +1,39 @@
+class Peanut001
+    {
+        // The ref keyword passes arguments by reference. 
+        // It means any changes made to this argument in the method will be 
+        // reflected in that variable when control returns to the calling method.
+        // https://www.c-sharpcorner.com/UploadFile/ff2f08/ref-vs-out-keywords-in-C-Sharp/
+
+        public static string GetNextName(ref int id)
+        {
+            string returnText = "Next-" + id.ToString();
+            id += 1;
+            return returnText;
+        }
+        static void Main2(string[] args)
+        {
+            int i = 1;
+            Console.WriteLine("Previous value of integer i:" + i.ToString());
+            string test = GetNextName(ref i);
+            Console.WriteLine("Current value of integer i:" + i.ToString());
+        }
+    }
+
+    class Peanut002
+    {
+        // The out keyword passes arguments by reference. This is very similar to the ref keyword.
+        public static string GetNextNameByOut(out int id)
+        {
+            id = 1;
+            string returnText = "Next-" + id.ToString();
+            return returnText;
+        }
+        static void Main(string[] args)
+        {
+            int i = 0;
+            Console.WriteLine("Previous value of integer i:" + i.ToString());
+            string test = GetNextNameByOut(out i);
+            Console.WriteLine("Current value of integer i:" + i.ToString());
+        }
+    }
