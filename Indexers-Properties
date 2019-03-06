@@ -1,0 +1,85 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Indexers
+{
+    /* 
+     * Indexers allow instances of a class or struct to be indexed just like arrays.
+    *  The indexed value can be set or retrieved without explicitly specifying a type or instance member.
+    *  Indexers resemble properties except that their accessors take parameters.
+    *  https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/indexers/
+    */
+
+    class PlayWithIndexers
+    {   
+        /* This Class is an array declaration using the "this" pointer */
+        private string[] SomeArrayData = new string[5];
+        public string this[int indexrange]
+        {
+            get
+            {
+                return SomeArrayData[indexrange];
+            }
+            set
+            {
+                SomeArrayData[indexrange] = value;
+            }
+        }
+    }
+   
+
+    class Workshop
+    {
+        public static void Main2()
+        {
+            PlayWithIndexers GreatLakes = new PlayWithIndexers();
+
+            GreatLakes[0] = "Lake Ontario";
+            GreatLakes[1] = "Lake Superior";
+            GreatLakes[2] = "Lake Michigan";
+            GreatLakes[3] = "Lake Erie ";
+            GreatLakes[4] = "Lake Huron";
+            Console.WriteLine("\n");
+            Console.WriteLine("  {0}\n  {1}\n  {2}\n  {3}\n  {4}\n", GreatLakes[0], GreatLakes[1], GreatLakes[2], GreatLakes[3], GreatLakes[4]);
+        }
+    }
+}
+
+namespace Properties
+{
+    // https://www.dotnetperls.com/property
+
+    class PlayingWithProperties
+    {
+        // Get, set.We introduce an Example class. One field, an integer, is present. It is used as a backing store for the Number property.
+
+        int _number;
+        
+        // Number: This is an int property. Number provides get { } and set { } implementations.
+
+        public int Number
+        {
+            // The get { } implementation must include a return statement. It can access any member on the class.
+            get
+            {
+                return this._number;
+            }
+            // The set { } implementation receives the implicit argument "value." This is the value to which the property is assigned.
+            set
+            {
+                this._number = value;
+            }
+        }
+    }
+
+    class Program
+    {
+        static void Main()
+        {
+            Example example = new Example();
+            example.Number = 5; // set { }
+            Console.WriteLine(example.Number); // get { }
+        }
+    }
+}
